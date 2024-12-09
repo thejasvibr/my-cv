@@ -1,0 +1,169 @@
+---
+name: Dr. Thejasvi 
+surname: Beleyur
+position: "Postdoctoral researcher"
+address: ""
+www: thejasvibr.github.io
+email: "thejasvib@gmail.com"
+github: thejasvibr
+date: "`r format(Sys.time(), '%B %Y')`"
+output: vitae::awesomecv
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+options(tinytex.verbose = TRUE)
+library(vitae)
+```
+
+# Work Experience
+
+```{r}
+library(tibble)
+tribble(
+  ~ Position, ~ Year, ~ Description, ~ Where,
+  "Research group leader (soon to be)", "March 2024 onwards" , "Group leader of the 'Active Sensing Collectives' research group " ,"Centre for the Advanced Study of Collective Behaviour (CASCB), Konstanz, Germany",
+  "CASCB Postdoc Award", "Dec 1 2023 - Feb 28 2024", "Competitive award for promising postdocs looking to start their own groups.", "CASCB, Uni. Konstanz",
+  "DFG Postdoctoral grant holder", "Aug 1 2022- Nov 30 2024", "DFG Walter Benjamin Awardee", "Dept. of Biology, Uni Konstanz, Germany",
+  "Postdoctoral researcher", "April 1 2022-June 30 2022", "Extension contract for CASCB work", "CASCB, Uni. Konstanz",
+  "Postdoctoral researcher", "March 15 2021-March 14 2022", "Developing analysis workflows to analyse the Ushichka dataset", "CASCB, Uni Konstanz",
+  "Doctoral work on IMPRS contract", "June 1 2020- Nov 31 2020", "Modelling and multi-sensor tracking of free-flying bat groups", "Max-Planck Institute for Ornithology, Seewiesen, Germany",
+  "Doctoral work on DAAD scholarship", "Sep 1 2015- Feb 28 2020", "Modelling and multi-sensor tracking of free-flying bat groups", "Max-Planck Institute for Ornithology, Seewiesen, Germany",
+  "Research assistant and lab manager", "Aug 1 2014 - July 31 2015", "Social spider web construction and setting up undergraduate laboratory facilities", "Azim Premji University, Bengaluru, India",)  %>% detailed_entries(Description, Year,Position , Where)
+```
+
+# Breaks/part-time work in career
+
+* 29/12/2022 - 28/2/2023 : full-time parental leave (Elternzeit)
+* 29/12/2023 - 28/4/2024 : 60% full-time work on parental leave  (Elternzeit) 
+
+# Education
+
+```{r}
+library(tibble)
+tribble(
+  ~ Degree, ~ Year, ~ Descr, ~ Where,
+  "PhD", "2015-2021 (Defence: 10th June 2021)", "PhD thesis: Theoretical and empirical investigations of echolocation in bat groups", "University of Konstanz, Germany",
+  "BS-MS dual degree in Biological Sciences", "2008-2013", "Masters thesis: Task differentiation during prey capture and retreat-mate recognition in the indian social spider, Stegodyphus sarasinorum (eresidae)", "IISER-Thiruvananthapuram, India",
+) %>% 
+  detailed_entries(Descr, Year, Degree, Where)
+```
+
+
+# Awards and grants
+
+```{r}
+library(tibble)
+tribble(
+  ~ Position, ~ Year, ~ Description, ~ Where,
+  "Carl Zeiss Nexus grant", "2024" , "Research group grant promoting interdisciplinary science" ,"CASCB, Uni. Konstanz",
+  "CASCB Postdoc Award", "2023", "Competitive award for promising postdocs looking to start their own groups.", "CASCB, Uni. Konstanz",
+  "CASCB Postdoc grant", '2023', 'Postdoc grant for promising early-career researchers', 'CASCB, Uni. Konstanz',
+  "CASCB Small grant", "2023", "Pilot grant to build a robotic bat platform", "CASCB, Uni. Konstanz",
+  "Best Early Career Researcher talk", "2023", "IBAC 2023", "International Bioacoustics Society conference, Japan,2023",
+  "Walter Benjamin Position", "2022.", " DFG Postdoctoral Grant", "Department of Biology, Uni. Konstanz",
+  "Young Scholar Fund Award", "2022", "Bridge fellowship", "CASCB, Uni. Konstanz",
+  "CASCB Medium Grant", "2021-2022", "Post doc grant", "CASCB, Uni Konstanz", 
+  "IMPRS Bridge Award", "June 2020- Nov 2020", "Award to wrap up PhD", "IMPRS for Organismal Biology",
+  "DAAD-GSSP scholarship", "2015-2020", "Scholarship awarded to pursue doctoral studies", "German Academic Exchange Service (DAAD)",
+  "IMPRS best paper award", "2020", "Annual award given to best papers submitted in the graduate school.", "IMPRS for Organismal Biology",
+"Google Cloud Platfrom Research Credits", "2019", "A 1000$ grant that provides access to cloud computing resources to execute simulations for Beleyur & Goerlitz 2019", "Google Cloud",
+  "IMPRS travel grant", "2017", "Travel grant awarded to attend the SNAK 2018 acoustics course in Odense, Denmark", "IMPRS for Organismal Biology") %>% 
+  detailed_entries(Description, Year,Position , Where)
+```
+
+
+# Publications
+
+```{r}
+library(dplyr)
+#knitr::write_bib(c("vitae", "tibble"), "packages.bib")
+bibliography_entries("publications.bib") 
+```
+\newpage 
+
+# Mentoring
+
+```{r mentoring}
+library(flextable)
+library(kableExtra)
+mentorship <- read.csv('mentorship.csv')
+colnames(mentorship) <- c('Name', 'Year', 'Title', 'Degree', 'Affiliation', 'Co-supervisors')
+mentorship$Year <- as.character(mentorship$Year)
+kable(mentorship) %>% column_spec(1,  latex_valign='m') %>% column_spec(2,  latex_valign='m') %>% column_spec(3, width='5cm', latex_valign='m') %>% column_spec(4, width='2cm', latex_valign='m') %>% column_spec(5, width='2cm', latex_valign='m') %>% column_spec(6, width='3cm',latex_valign='m')
+#ft <- flextable(mentorship)
+#ft
+
+
+# knitr::kable(mentorship, format='latex')
+
+# Person, degree + Affiliation , Year, Title, Supervisors
+#mentorship_ <- c('Alberto Doimo', 'Masters thesis, Technical University of Milan', '2024', 'RO-BAT: a bat-inspired approach on mobile robot navigation using Direction of Arrival estimation', 'Co-sup. with #Dr. Andreagiovanni Reina, Prof. Heiko Hammann - Uni. Konstanz' )
+#mentorship_1 <- c('Clare Guerin', 'Erasmus Mundus Project, LMU Munich', '2016', 'Quantifying potential #sensory interference in bat aggregations', 'Co-sup. with Dr. Holger Goerlitz - MPI Ornithology, Seewiesen')
+
+#mentorship_df <- data.frame(c(mentorship_, mentorship_1))
+#formattable(mentorship_df)
+
+
+```
+
+
+# Teaching 
+
+## Lectures
+
+* 2024 'Animal Behaviour' undergraduate course (Uni. Konstanz) lecture on *Sensory ecology, animal behaviour  and collectives*
+
+* 2023 lecturer at the Konstanz School of Collective Behaviour, Uni. Konstanz, *Acoustic tracking from easy to crazy*
+
+## In-house talks and workshops on software and coding practices
+
+* *Version Control for Organismal Biologists*: introductory workshop on why one should use version control and how to do it with Git (3 workshops so far)
+* *Python for Organismal Biologists*: introductory workshop on using Python for scientific computing with example code and Jupyter notebooks that participants run during the workshop (2 workshops so far)
+
+
+
+# Scientific software packages
+I strive to make the code I write for various projects as modular and re-usable as possible while adopting software development best practices. A selection of packages that I've written, along with a short description. 
+
+* ```beamshapes```: computational implementations of various sound-radiation models. The models can be used to perform predictions for planned experiments, or parameter inference.  [*Paper hyperlink*](https://joss.theoj.org/papers/10.21105/joss.03740). [*Online docs hyperlink*](https://beamshapes.readthedocs.io/en/latest/)
+
+* ```itsfm```: segments sounds based on frequency modulation. Various inbuilt and custom measurements can also be performed on the segmented audio. [*Preprint hyperlink*](https://www.biorxiv.org/content/10.1101/2021.01.09.426033v1). [*Online docs hyperlink*](https://itsfm.rtfd.io)
+
+* ```batracker``` (*under development*): a bat-centric acoustic tracking package developed to handle simple (single-few bats, clean recordings) to complex (multiple bats, overlapping calls, reverberance) datasets using the latest in signal analysis and tracking algorithms. To my knowledge, this is the first bat-centric open-source package in development. [*Online docs hyperlink*](https://batracker.rtfd.io)
+
+\newpage 
+# Technical skills 
+
+* Acoustic and video tracking of animals 
+* Design, execution and analysis of bioacoustics and animal behaviour experiments
+* Experience handling animals (ants, spiders, bats) and managing field work
+* Signal and image analysis, digital data acquisition methods
+* Writing readable and reproducible scientific code
+* Coding in order of language proficiency: Python, R, MATLAB
+* Writing and maintaining scientific software packages
+
+
+
+## Other Competencies
+
+* Scientific manuscript and grant writing
+* Track record of working in interdisciplinary environments 
+  
+## Languages spoken (self-assessed CEFR levels)
+The CEFR ([link](https://en.wikipedia.org/wiki/Common_European_Framework_of_Reference_for_Languages)) has three divisions (A: basic user, B: independent user, C: proficient user). Each divisons has two levels (1,2).
+
+* English: C2 (proficiency)
+* German: B1 (upper intermediate)
+* Kannada: B1
+* Hindi: B1
+* Bahasa Indonesia: A2 (elementary)
+
+
+# Public outreach
+
+My German is good enough to allow semi-technical conversations that convey my enthusiasm for bats, echolocation and the techniques we use to study them. I use the various opportunities to interact with the public:
+
+* September 2018, 'Fledermausführung': I co-led a 'bat walk' session for a group of school children while talking about the biology, behaviour and techniques related to bats. 
+* July 2017, BIOTOPIA Stadtteilfest: I was in charge of explaining various exhibits highlighting animal and plant forms as part of a one-day even to increase public awareness of the then newly opened BIOTOPIA museum.
+* June 2017, Tag der Oeffenen Tür: Open day at the Max-Planck Institute for Ornithology, Seewiesen. I was part of an exhibit showcasing various aspects of bat biology and echolocation research done in my former lab. 
+* January 2017, BIOTOPIA inaugration event: I had an exhibit showing a live feed of a single thermal camera as people walked by, explaining how it works, and how we use them in our research studying bats in the dark.
